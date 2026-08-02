@@ -1,9 +1,19 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import { productContent } from "@/content/product";
 import { ProductColorProvider } from "@/hooks/useProductColor";
-import ColorSelector from "@/components/ColorSelector";
-import ProductGallery from "@/components/ProductGallery";
-import LoadingAnimation from "@/components/LoadingAnimation";
-export const dynamic = "force-dynamic";
+
+const ColorSelector = dynamic(() => import("@/components/ColorSelector"), {
+  ssr: false,
+});
+const ProductGallery = dynamic(() => import("@/components/ProductGallery"), {
+  ssr: false,
+});
+const LoadingAnimation = dynamic(
+  () => import("@/components/LoadingAnimation"),
+  { ssr: false }
+);
 
 export default function ShowcasePage() {
   return (
