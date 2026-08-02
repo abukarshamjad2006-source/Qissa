@@ -3,7 +3,6 @@ import { ProductColorProvider } from "@/hooks/useProductColor";
 import ColorSelector from "@/components/ColorSelector";
 import ProductGallery from "@/components/ProductGallery";
 import LoadingAnimation from "@/components/LoadingAnimation";
-export const dynamic = "force-dynamic";
 
 export default function ShowcasePage() {
   return (
