@@ -33,3 +33,25 @@ export default function ScrollSection({
         animate={{
           scale: isInView ? 1 : 1.08,
           opacity: isInView ? 1 : 0,
+          filter: isInView ? "blur(0px)" : "blur(10px)",
+        }}
+        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          priority={priority}
+          sizes="100vw"
+          className="object-cover"
+        />
+      </motion.div>
+
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-forest-950/30 via-transparent to-forest-950/10" />
+
+      <span className="absolute bottom-8 left-8 font-body text-xs tracking-widest2 text-cream-100/70">
+        {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+      </span>
+    </section>
+  );
+}
