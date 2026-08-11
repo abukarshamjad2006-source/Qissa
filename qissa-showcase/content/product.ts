@@ -31,9 +31,9 @@ export const productContent: ProductContent = {
       imageCount: 4,
     },
     {
-      id: "white",
-      label: "أبيض",
-      swatch: "#F3EDDF",
+      id: "brown",
+      label: "بني",
+      swatch: "#8B6F55",
       folder: "white",
       imageCount: 4,
     },
