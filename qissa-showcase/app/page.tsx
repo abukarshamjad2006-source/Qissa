@@ -1,25 +1,28 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import { productContent } from "@/content/product";
-import ProductHero from "@/components/ProductHero";
-import ProductDescription from "@/components/ProductDescription";
-import FabricSection from "@/components/FabricSection";
+import { ProductColorProvider } from "@/hooks/useProductColor";
 
-export default async function ProductPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ color?: string }>;
-}) {
-  const { color: colorId } = await searchParams;
-  const color =
-    productContent.colors.find((c) => c.id === colorId) ??
-    productContent.colors[0];
+const ColorSelector = dynamic(() => import("@/components/ColorSelector"), {
+  ssr: false,
+});
+const ProductGallery = dynamic(() => import("@/components/ProductGallery"), {
+  ssr: false,
+});
+const LoadingAnimation = dynamic(
+  () => import("@/components/LoadingAnimation"),
+  { ssr: false }
+);
 
+export default function ShowcasePage() {
   return (
-    <main className="bg-cream-50">
-      <ProductHero color={color} />
-      <ProductDescription paragraphs={productContent.designDescription} />
-      <FabricSection
-        intro={productContent.fabricIntro}
-        details={productContent.fabricDetails}
-      />
-    </main>
+    <ProductColorProvider initialColor={productContent.colors[0].id}>
+      <LoadingAnimation />
+      <main className="relative h-[100svh] w-full bg-forest-950">
+        <ColorSelector colors={productContent.colors} />
+        <ProductGallery />
+      </main>
+    </ProductColorProvider>
   );
+}
