@@ -17,6 +17,13 @@ export interface FabricDetail {
   value: string;
 }
 
+export interface SizeRow {
+  heightRange: string;
+  weightRange: string;
+  relaxedFit: string;
+  oversizedFit: string;
+}
+
 export interface ProductContent {
   brandName: string;
   productName: string;
