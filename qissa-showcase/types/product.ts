@@ -17,13 +17,6 @@ export interface FabricDetail {
   value: string;
 }
 
-export interface SizeRow {
-  heightRange: string;
-  weightRange: string;
-  relaxedFit: string;
-  oversizedFit: string;
-}
-
 export interface ProductContent {
   brandName: string;
   productName: string;
@@ -35,7 +28,4 @@ export interface ProductContent {
   colors: ProductColor[];
   nextButtonLabel: string;
   backButtonLabel: string;
-  sizeChartTitle: string;
-  sizeChartIntro: string;
-  sizeChartRows: SizeRow[];
 }
