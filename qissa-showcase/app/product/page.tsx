@@ -1,6 +1,7 @@
 import { productContent } from "@/content/product";
 import ProductHero from "@/components/ProductHero";
 import ProductDescription from "@/components/ProductDescription";
+import SizeChart from "@/components/SizeChart";
 import FabricSection from "@/components/FabricSection";
 
 export default async function ProductPage({
@@ -17,6 +18,11 @@ export default async function ProductPage({
     <main className="bg-cream-50">
       <ProductHero color={color} />
       <ProductDescription paragraphs={productContent.designDescription} />
+      <SizeChart
+        title={productContent.sizeChartTitle}
+        intro={productContent.sizeChartIntro}
+        rows={productContent.sizeChartRows}
+      />
       <FabricSection
         intro={productContent.fabricIntro}
         details={productContent.fabricDetails}
