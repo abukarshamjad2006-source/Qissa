@@ -35,4 +35,7 @@ export interface ProductContent {
   colors: ProductColor[];
   nextButtonLabel: string;
   backButtonLabel: string;
+  sizeChartTitle: string;
+  sizeChartIntro: string;
+  sizeChartRows: SizeRow[];
 }
