@@ -67,7 +67,7 @@ export function getSizeRecommendation(
   height: number,
   weight: number
 ): SizeResult {
-  أولًا: البحث عن تطابق الطول والوزن معًا
+  // البحث عن تطابق الطول والوزن معًا
   const exact = sizeBands.find(
     (band) =>
       height >= band.hMin &&
@@ -83,7 +83,7 @@ export function getSizeRecommendation(
     };
   }
 
-  // ثانيًا: إذا لم يوجد تطابق، نعتمد على الوزن
+  // إذا لم يوجد تطابق، نعتمد على الوزن
   const byWeight = sizeBands.find(
     (band) => weight >= band.wMin && weight <= band.wMax
   );
@@ -95,7 +95,7 @@ export function getSizeRecommendation(
     };
   }
 
-  // ثالثًا: اختيار أقرب نطاق للوزن
+  // اختيار أقرب نطاق للوزن
   let closest = sizeBands[0];
   let minDifference = Infinity;
 
