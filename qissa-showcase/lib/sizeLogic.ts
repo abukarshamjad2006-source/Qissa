@@ -3,9 +3,18 @@ import { SizeRow } from "@/types/product";
 function parseRange(range: string): [number, number] {
   const [min, max] = range
     .split("-")
-    .map((s) => parseInt(s.trim(), 10));
+    .map((value) => Number(value.trim()));
 
   return [min, max];
+}
+
+function isInRange(
+  value: number,
+  range: string
+): boolean {
+  const [min, max] = parseRange(range);
+
+  return value >= min && value <= max;
 }
 
 export function getSizeRecommendation(
@@ -13,31 +22,46 @@ export function getSizeRecommendation(
   weight: number,
   rows: SizeRow[]
 ): SizeRow {
-  const scored = rows.map((row) => {
-    const [hMin, hMax] = parseRange(row.heightRange);
-    const [wMin, wMax] = parseRange(row.weightRange);
+  // 1. البحث عن صف يطابق الطول والوزن معًا
+  const exactMatch = rows.find(
+    (row) =>
+      isInRange(height, row.heightRange) &&
+      isInRange(weight, row.weightRange)
+  );
 
-    const heightDist =
-      height < hMin
-        ? hMin - height
-        : height > hMax
-          ? height - hMax
-          : 0;
+  if (exactMatch) {
+    return exactMatch;
+  }
 
-    const weightDist =
-      weight < wMin
-        ? wMin - weight
-        : weight > wMax
-          ? weight - wMax
-          : 0;
+  // 2. إذا لم يوجد تطابق كامل، البحث حسب الوزن
+  const weightMatch = rows.find((row) =>
+    isInRange(weight, row.weightRange)
+  );
 
-    return {
-      row,
-      score: heightDist * 2 + weightDist,
-    };
+  if (weightMatch) {
+    return weightMatch;
+  }
+
+  // 3. إذا لم يوجد نطاق مناسب، نبحث عن أقرب نطاق للوزن
+  let closestRow = rows[0];
+  let closestDistance = Infinity;
+
+  rows.forEach((row) => {
+    const [minWeight, maxWeight] = parseRange(row.weightRange);
+
+    let distance = 0;
+
+    if (weight < minWeight) {
+      distance = minWeight - weight;
+    } else if (weight > maxWeight) {
+      distance = weight - maxWeight;
+    }
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestRow = row;
+    }
   });
 
-  scored.sort((a, b) => a.score - b.score);
-
-  return scored[0].row;
+  return closestRow;
 }
