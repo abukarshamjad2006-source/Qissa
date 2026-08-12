@@ -24,7 +24,7 @@ export default function ProductDescription({
           {paragraphs.map((p, i) => (
             <motion.p
               key={i}
-              className="font-body text-lg leading-9 text-ink-900/85 md:text-xl md:leading-10"
+              className="font-body text-lg leading-10 text-ink-900/85 md:text-xl md:leading-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-15%" }}
