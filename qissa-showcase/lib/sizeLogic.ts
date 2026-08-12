@@ -63,8 +63,11 @@ const sizeBands: SizeBand[] = [
   },
 ];
 
-export function getSize(height: number, weight: number): SizeResult {
-  // أولًا: البحث عن تطابق الطول والوزن معًا
+export function getSizeRecommendation(
+  height: number,
+  weight: number
+): SizeResult {
+  أولًا: البحث عن تطابق الطول والوزن معًا
   const exact = sizeBands.find(
     (band) =>
       height >= band.hMin &&
