@@ -69,8 +69,8 @@ export default function SizeCalculator({
             </div>
             <input
               type="range"
-              min={150}
-              max={200}
+              min={145}
+              max={205}
               value={height}
               onChange={(e) => setHeight(Number(e.target.value))}
               className="w-full accent-gold-500"
