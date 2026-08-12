@@ -81,11 +81,43 @@ export const productContent: ProductContent = {
   sizeChartTitle: "جدول المقاسات",
   sizeChartIntro: "اختر مقاسك بناءً على طولك ووزنك — لكل فئة توصية بمقاس مريح (Relaxed) ومقاس أوفر سايز (Oversized).",
   sizeChartRows: [
-    { heightRange: "155 - 175", weightRange: "45 - 75", relaxedFit: "S", oversizedFit: "M" },
-    { heightRange: "176 - 185", weightRange: "76 - 85", relaxedFit: "M", oversizedFit: "L" },
-    { heightRange: "186 - 195", weightRange: "86 - 95", relaxedFit: "L", oversizedFit: "XL" },
-    { heightRange: "186 - 195", weightRange: "95 - 100", relaxedFit: "XL", oversizedFit: "XL" },
-  ],
+  {
+    heightRange: "155 - 165",
+    weightRange: "45 - 55",
+    relaxedFit: "XS أو S",
+    oversizedFit: "S",
+  },
+  {
+    heightRange: "160 - 170",
+    weightRange: "56 - 65",
+    relaxedFit: "S",
+    oversizedFit: "M",
+  },
+  {
+    heightRange: "170 - 180",
+    weightRange: "66 - 78",
+    relaxedFit: "S",
+    oversizedFit: "M",
+  },
+  {
+    heightRange: "175 - 185",
+    weightRange: "79 - 90",
+    relaxedFit: "M",
+    oversizedFit: "L",
+  },
+  {
+    heightRange: "180 - 190",
+    weightRange: "91 - 105",
+    relaxedFit: "L",
+    oversizedFit: "XL",
+  },
+  {
+    heightRange: "185 - 205",
+    weightRange: "106 - 130",
+    relaxedFit: "XL",
+    oversizedFit: "XXL",
+  },
+],
 
   nextButtonLabel: "التالي",
   backButtonLabel: "رجوع",
